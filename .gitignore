@@ -35,7 +35,6 @@
 *.i*86
 *.x86_64
 *.hex
-clox
 
 # Debug files
 *.dSYM/
@@ -54,3 +53,6 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+bin/
+.clangd
