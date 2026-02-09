@@ -56,3 +56,4 @@ dkms.conf
 
 clox
 compile_commands.json
+.cache/
