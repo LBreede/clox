@@ -8,6 +8,23 @@ SRCS = $(wildcard $(SRC_DIR)/*.c)
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 DEPS = $(OBJS:.o=.d)
 
+DEBUG_FLAGS ?= -DDEBUG_PRINT_CODE -DDEBUG_TRACE_EXECUTION
+ifneq ($(RELEASE),)
+  DEBUG_FLAGS :=
+endif
+ifneq ($(NO_DEBUG),)
+  DEBUG_FLAGS :=
+endif
+
+CFLAGS += $(DEBUG_FLAGS)
+
+ifneq ($(DEBUG_PRINT_CODE),)
+  CFLAGS += -DDEBUG_PRINT_CODE
+endif
+ifneq ($(DEBUG_TRACE_EXECUTION),)
+  CFLAGS += -DDEBUG_TRACE_EXECUTION
+endif
+
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
